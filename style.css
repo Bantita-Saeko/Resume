@@ -1,0 +1,423 @@
+:root {
+    /* โทนสีขาวดำ (Monochrome/Minimalist) */
+    --primary-color: #111111; /* ดำเข้มเกือบดำสนิท */
+    --secondary-color: #FFFFFF; /* สีขาวบริสุทธิ์ */
+    --accent-color: #444444; /* สีเทาเข้มสำหรับขอบ/เน้น */
+    --background-color: #F8F8F8; /* สีพื้นหลังขาวนวลอ่อนมาก */
+    --font-color: #333333; /* สีข้อความปกติ */
+    --base-white-color: #ffffff; 
+    --base-black-color: #000000; 
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-padding-top: 80px;
+}
+body {
+    font-family: 'Nunito', 'BaiJamjuree';
+    background-color: var(--background-color); 
+    color: var(--font-color);
+}
+
+header {
+    background-color: var(--primary-color);
+}
+
+/* --- Keyframes สำหรับ Animation --- */
+
+/* Keyframe สำหรับ Hero Text (Smooth Drop) */
+@keyframes hero-drop {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Keyframe สำหรับ Pulse Effect (Smooth Scale Up) */
+@keyframes smooth-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); } /* ขยายเล็กน้อยอย่างนุ่มนวล */
+    100% { transform: scale(1); }
+}
+
+/* -------------------------------------- */
+
+
+/* --- Navigation & Header --- */
+.logo {
+    color: var(--secondary-color) !important;
+    animation: smooth-pulse 5s infinite ease-in-out; 
+}
+
+.nav a {
+    color: var(--secondary-color); 
+    text-decoration: none;
+    padding: 5px;
+    margin: 0 5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+.nav a:hover {
+    color: var(--secondary-color); 
+    text-shadow: 0 0 5px var(--secondary-color);
+}
+.nav a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px; 
+    background-color: var(--secondary-color);
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.nav-link {
+    color: var(--secondary-color);
+    transition: all 0.3s ease;
+}
+.nav-link:hover {
+    color: var(--secondary-color); 
+    text-shadow: 0 0 5px var(--secondary-color);
+}
+
+/* --- Buttons (ปุ่ม Outline ขาวดำ) --- */
+.btn {
+    border-radius: 100px; 
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--base-black-color); 
+    position: relative; 
+    overflow: hidden; 
+    z-index: 1;
+}
+.btn a {
+    text-decoration: none;
+    color: var(--base-black-color);
+    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+    position: relative;
+}
+
+/* ปุ่มหลัก (Download Portfolio) */
+.btn-primary {
+    background-color: var(--secondary-color); /* พื้นหลังเป็นสีขาว */
+    color: var(--base-black-color);
+    border: 1px solid var(--base-black-color); 
+    animation: none; 
+}
+
+/* Hover Effect ปุ่มหลัก: พื้นหลังดำทึบ, ตัวอักษรขาว (เน้นความทึบตามที่ระบุ) */
+.btn-primary:hover {
+    background-color: var(--base-black-color); 
+    color: white;
+    border-color: var(--base-black-color);
+    transform: scale(1.05); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.btn-primary:hover a {
+    color: var(--secondary-color); /* ตัวอักษรสีขาว */
+}
+
+
+/* ปุ่มรอง (Explore, Top) */
+.btn-outline-secondary {
+    background-color: transparent;
+    border: 1px solid var(--base-black-color);
+    color: var(--base-black-color);
+}
+
+/* Hover Effect ปุ่มรอง: พื้นหลังขาวทึบ, ตัวอักษรดำ (เพื่อความสว่างและอ่านง่าย) */
+.btn-outline-secondary:hover {
+    background-color: var(--secondary-color); /* พื้นหลังสีขาวทึบ */
+    border-color: var(--base-black-color);
+    transform: scale(1.05); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.btn-outline-secondary:hover a {
+    color: var(--base-black-color); /* ตัวอักษรสีดำ */
+}
+/* ----------------------------- */
+
+/* --- Hero Section & Text Style --- */
+.text h1 {
+    color: var(--base-black-color) !important;
+    text-shadow: none !important;
+    animation: hero-drop 1s ease-out; 
+}
+.waving-text {
+    display: inline-block;
+    animation: none; 
+}
+.text h3 {
+    animation: hero-drop 0.8s ease-out;
+}
+.text p {
+    animation: hero-drop 1.2s ease-out;
+}
+
+/* --- Contact & Footer --- */
+.contact-main {
+    display: flex;
+    padding: 0px 0 20px 0;
+}
+.contact-main .circle {
+    margin: 0 20px 0 0;
+    border : 1px solid var(--base-black-color);
+    padding: 15px 18px;
+    border-radius: 999px;
+    background-color: var(--base-white-color);
+    transition: all 0.3s ease;
+}
+.contact-main .circle:hover {
+    background-color: var(--base-black-color);
+    transform: translateY(-3px);
+    transition: all 0.3s ease;
+}
+.contact-main .circle:hover i {
+    color: var(--base-white-color);
+}
+.contact-main i {
+    font-size: 30px;
+    color: var(--base-black-color);
+}
+.footer-container {
+    background-color: var(--primary-color);
+}
+.footer-container a {
+    color: var(--secondary-color) !important;
+}
+
+
+/* --- Card Styles & Hover Animation --- */
+.card {
+    border: 1px solid var(--accent-color);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+    border-radius: 0px; 
+}
+.card:hover {
+    transform: translateY(-3px); 
+    box-shadow: 4px 4px 0px var(--base-black-color); 
+}
+.img-size {
+    width: auto;
+    height: 600px;
+    object-position: top;
+    border-radius: 0px !important;
+}
+.logo-size {
+    width: 70px;
+    height: auto;
+}
+.circle {
+    background-color: var(--background-color);
+    border: 1px solid var(--base-black-color);
+    margin: 20px 100px 0 100px;
+    padding: 5px 0;
+    border-radius: 20px;
+}
+.circle2 {
+    background-color: var(--background-color);
+    border: 1px solid var(--base-black-color);
+    margin: 20px 200px;
+    padding: 5px 0;
+    border-radius: 20px;
+
+}
+.full-screen-menu {
+    display: none;
+}
+.hamburger-icon {
+    display: none;
+}
+
+/* --- Media Queries --- */
+@media screen and (max-width: 1200px) {
+    .circle {
+        margin: 10px 90px;
+    }
+    .circle2 {
+        margin: 10px 180px;
+    }
+    .hamburger-icon {
+        display: none;
+    }
+}
+/* Tablet Responsive*/
+@media screen and (max-width: 992px) {
+    header {
+        text-align: center;
+    }
+    .about {
+        margin: 0 auto;
+    }
+    .text {
+        text-align: center;
+    }
+    .lead {
+        text-align: start;
+    }
+    .contact-main {
+        justify-content: center;
+    }
+    .btn {
+        width: 100%;
+    }
+    .circle {
+        margin: 10px 110px;
+    }
+    .circle2 {
+        margin: 10px 110px;
+    }
+    .card-pers {
+        text-align: center;
+        width: 100%;
+    }
+    .card-pers .btn-group {
+        width: 100%;
+    }
+    h2 {
+        white-space: normal;
+        display: block; 
+        text-align: center;
+    }
+    .Per1{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .Per1 .img {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .Per2 {
+        display: flex;
+        flex-direction: column;
+    }
+    .Per2 .img {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .button1 {
+        white-space: nowrap;
+        display: inline-block;
+        display: block;
+        margin: 0 auto;
+        margin-top: 20px;
+        text-align: center; 
+    }
+}
+
+/* Mobile Responsive*/
+@media screen and (max-width: 768px) {
+    .about {
+        margin: 0 auto;
+    }
+    .circle {
+        margin:10px 70px;
+
+    }
+    .circle2 {
+        margin: 10px 190px;
+    }
+    .btn-outline-secondary {
+        margin-bottom: 20px;
+    }
+    .Per2 {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    nav {
+        display: none;
+    }
+    .logo {
+        margin-top: 20px;
+
+    }
+    .hamburger-icon {
+        display:block;
+        font-size: 2rem;
+        cursor: pointer;
+        color: white;
+        position: absolute;
+        top: 20px;
+        right: 30px;
+    }
+    button {
+        margin-bottom: 30px;
+    }
+    .full-screen-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9); 
+        color: white;
+        text-align: center;
+        padding-top: 50px;
+        z-index: 999;
+    }
+
+    .full-screen-menu ul {
+        list-style: none;
+        padding-top: 50px;
+    }
+
+    .full-screen-menu ul li {
+        margin: 20px 0;
+    }
+
+    .full-screen-menu ul li a {
+        font-size: 20px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .full-screen-menu ul li a:hover {
+        color: var(--secondary-color);
+    }
+
+    /* ปุ่มปิดเมนู */
+    .close-btn {
+        font-size: 32px;
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        cursor: pointer;
+        color: rgb(255, 255, 255);
+    }
+    .button1 {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    
+    .circle {
+        margin: 10px 190px;
+    }
+    .circle2 {
+        margin: 10px 190px;
+    }
+    h2 {
+        white-space: normal;
+        display: block; 
+        text-align: center;
+    }
+}
