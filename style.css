@@ -1,7 +1,7 @@
 :root {
     --primary-color :#252422; 
     --secondary-color :#FFFCF2; 
-    --button-color :#557fff; 
+    --button-color :#5a89ff; 
     --background-color :#CCC5B9; 
     --font-color :#403D39; 
     --base-white-color :#ffffff; 
@@ -145,10 +145,6 @@ header {
 
 .hamburger-icon {
     display: none;
-}
-.header2 {
-    color: var(--button-color);
-    text-shadow: 2px 2px 2px rgb(210, 210, 210);
 }
 
 @media screen and (max-width: 1200px) {
