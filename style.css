@@ -1,11 +1,15 @@
 :root {
     --primary-color :#252422; 
     --secondary-color :#FFFCF2; 
-    --button-color :#4f81ff; 
+    --button-color :#4fa7ff; 
     --background-color :#CCC5B9; 
     --font-color :#403D39; 
     --base-white-color :#ffffff; 
     --base-black-color :#000000; 
+    --card-radius: 20px;
+    --accent-blue: #004e92; /* สีน้ำเงินเฉดที่คุณต้องการ */
+    --text-dark: #333333;
+    --text-muted: #888888;
 }
 * {
     margin: 0;
@@ -23,6 +27,22 @@ body {
 header {
     background-color: var(--primary-color);
     
+}
+
+.name-gradient {
+    /* กำหนดทิศทางจากซ้ายไปขวา (90deg) จากสีดำ (#000000) ไปยังสีน้ำเงินเข้ม (#004e92) */
+    background: linear-gradient(90deg, #000000 0%, #004e92 100%);
+    
+    /* ทำให้พื้นหลังไปปรากฏแค่บนตัวอักษร */
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* ทำให้สีของตัวอักษรปกติโปร่งแสงเพื่อโชว์ Gradient */
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+    /* เพิ่มความชัดให้ฟอนต์หนาตามคลาส fw-bold */
+    display: inline-block;
 }
 
 .nav {
@@ -89,6 +109,163 @@ header {
 .btn-outline-secondary:hover {
     border: 2px solid var(--base-black-color);
 }
+.badge {
+    background-color: var(--button-color);
+    opacity: 50%;
+    border-radius: 20px;
+}
+
+/* ปรับให้ Section แผ่เต็มจอและดูสะอาดตา */
+.programming-skills-section {
+    width: 100%;
+    margin: 0;
+    padding: 60px 0;
+    border-top: 1px solid #eee;    /* เพิ่มเส้นขอบบน-ล่างบางๆ (ถ้าชอบ) */
+    border-bottom: 1px solid #eee;
+}
+
+/* ตัว Card (สไตล์มินิมอลที่คุณเลือกไว้) */
+.skill-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 25px 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+    height: 100%;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border-color: #004e92; /* ขอบน้ำเงินตอน Hover */
+}
+
+.icon-box img {
+    max-width: 45px;
+    margin-bottom: 15px;
+}
+
+/* สไตล์พื้นฐานของ Card */
+.skill-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: var(--card-radius);
+    padding: 30px 15px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* จัดการกล่องไอคอน */
+.icon-box {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.icon-box img {
+    max-width: 100%;
+    height: auto;
+    /* ลดความสดของสีลงเล็กน้อยในสถานะปกติ */
+    filter: grayscale(10%) opacity(0.9);
+}
+
+/* ข้อความ */
+.skill-meta h6 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.skill-meta p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+/* --- ลูกเล่นตอน Hover --- */
+
+.skill-card:hover {
+    transform: translateY(-8px); /* ลอยขึ้น */
+    background: #ffffff;
+    border-color: var(--accent-blue); /* เปลี่ยนขอบเป็นสีน้ำเงิน */
+    /* เพิ่มเงาที่ดูนุ่มนวลและกว้างขึ้น */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+.skill-card:hover .icon-box {
+    transform: scale(1.1); /* ขยายไอคอนเล็กน้อย */
+}
+
+.skill-card:hover .icon-box img {
+    filter: grayscale(0%) opacity(1); /* คืนสีสันให้ชัดเจน */
+}
+
+.skill-card:hover h6 {
+    color: var(--accent-blue); /* เปลี่ยนสีหัวข้อตามสี Accent */
+}
+
+.software-skills-section {
+    border-top: 1px solid #f0f0f0;
+}
+
+.software-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* เว้นระยะไอคอนกับข้อความ */
+    transition: all 0.3s ease;
+}
+
+.software-card .icon-box {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.software-card .icon-box img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.software-info h6 {
+    font-weight: 700;
+    margin-bottom: 2px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.software-info p {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 0;
+}
+
+/* ลูกเล่น Hover */
+.software-card:hover {
+    transform: translateX(5px); /* ขยับไปทางขวานิดๆ แทนการลอยขึ้น */
+    border-color: #004e92;
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.05);
+}
+
 .contact-main {
     display: flex;
     padding: 0px 0 20px 0;
